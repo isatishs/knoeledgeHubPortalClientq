@@ -1,0 +1,42 @@
+
+<!-- {{}}-string interpolution 1 way binding
+[]-
+()- event binging
+[()]-two way binding 
+-->
+@if(categoryCreated){
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{categoryObj.name}}</strong> created sucessfully
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+}
+<div class="container p-4">
+    <!-- {{categoryObj.categoryName}}
+    {{categoryForm.valid}} -->
+
+    <h1>Create Category</h1>
+<form #categoryForm="ngForm" (ngSubmit)="onSubmit()">
+    <!-- categoryName -->
+<div data-mdb-input-init class="form-outline mb-4">
+    <label class="form-label" for="categoryName">Category Name</label>
+    <input [class.is-invalid]="categoryName.touched && categoryName.invalid" #categoryName="ngModel" type="text" id="categoryName" class="form-control" 
+    name="categoryName" [(ngModel)]="categoryObj.name" 
+     required/>
+     <!-- @if(!categoryName.pristine && categoryName.invalid) -->
+      <small class="text-danger" [class.d-none]="categoryName.untouched || categoryName.valid">Category name is required</small>
+
+     
+  </div>
+  
+  <!-- categoryDesc -->
+  <div data-mdb-input-init class="form-outline mb-4">
+    <label class="form-label" for="categoryDesc">Category Description</label>
+    <textarea #desc="ngModel" [class.is-invalid]="desc.invalid && desc.touched" id="categoryDesc" class="form-control" name="cateoryDescription" rows="4" [(ngModel)]="categoryObj.description" required></textarea>
+    <small class="text-danger" [class.d-none]="desc.untouched || desc.valid">Category name is required</small>
+
+  </div>
+  <div class="col-auto">
+    <button data-mdb-ripple-init type="submit" class="btn btn-primary" [disabled]="categoryForm.invalid">Submit</button>
+  </div>
+</form>
+</div>
