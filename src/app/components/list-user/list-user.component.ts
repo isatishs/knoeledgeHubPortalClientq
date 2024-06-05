@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-list-user',
@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './list-user.component.html',
   styleUrl: './list-user.component.css'
 })
-export class ListUserComponent {
+export class ListUserComponent implements OnInit {
 
+  userListObj: any = [];
+  ngOnInit(): void {
+    this.userListObj = [{ name: "Admin" }, { name: "User" }]
+  }
 }
