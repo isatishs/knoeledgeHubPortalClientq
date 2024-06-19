@@ -33,7 +33,9 @@ export class CategoryService {
 
   editCategoy(editCategory: Category) {
     const apiURL: string = "https://localhost:44395/api/Categories";
-    return this.http.put(apiURL, editCategory);
+    let token = localStorage.getItem("accessToken");
+    let headers = new HttpHeaders().set("Authorization", `Bearer ${token}`);
+    return this.http.put(apiURL, editCategory, { headers });
   }
 
   getCategoyById(cid: number) {
@@ -44,7 +46,9 @@ export class CategoryService {
   deleteCategoyById(cid: number) {
     console.log("cid>>>>>>>>", cid)
     const apiURL: string = "https://localhost:44395/api/Categories/" + cid;
-    return this.http.delete(apiURL);
+    let token = localStorage.getItem("accessToken");
+    let headers = new HttpHeaders().set("Authorization", `Bearer ${token}`);
+    return this.http.delete(apiURL, { headers });
   }
 }
 

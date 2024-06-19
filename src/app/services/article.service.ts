@@ -35,7 +35,8 @@ export class ArticleService {
     const apiUrl: string = `https://localhost:44395/api/Articles/review/${cid}`;
     let token = localStorage.getItem("accessToken");
     let headers = new HttpHeaders().set("Authorization", `Bearer ${token}`);
-    return this.http.get<reviewArticle[]>(apiUrl);
+    var res: any = this.http.get<reviewArticle[]>(apiUrl);
+    return res;
   }
 
   approveArticle(aid: number[]) {

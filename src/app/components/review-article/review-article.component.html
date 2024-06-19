@@ -40,7 +40,7 @@
         <tr>
             <th scope="col">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <input class="form-check-input" type="checkbox" [(ngModel)]="multiSelect" (change)="selectAll($event)" value={{multiSelect}} />
             </div>
             </th>
             <th scope="col">Title</th>
@@ -53,7 +53,7 @@
         <tr *ngFor="let a of reviewArticleObj; let i = index" >
             <th scope="row">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" (change)="changed($event,a.articleID)" value={{a.articleID}}  />
+                <input class="form-check-input" type="checkbox" [(ngModel)]="articleIDs[i]" (change)="changed($event,a, i)" value={{a.articleID}}  />
 
 
             </div>

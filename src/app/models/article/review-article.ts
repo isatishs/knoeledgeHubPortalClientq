@@ -6,7 +6,7 @@ export class reviewArticle {
     postedBy: string;
     categoryId: number;
     articleID: number;
-    approve: boolean;
+    approve: boolean = false;
 
     constructor() {
         this.categoryName = "";
